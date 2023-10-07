@@ -1,0 +1,88 @@
+<p class="text-center">usuario works!</p>
+<div class="container me-auto mb-2 mb-lg-0">
+    <div class="row">
+        <div class="col-3 border border-dark border-2">
+            <h1 class="text-center">Usuario:</h1>
+        </div>
+        <div class="col-9 border border-dark border-2">
+            <h1 class="text-center">Historial:</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 border border-dark border-2 ">
+            <br>
+            <div class="lh-sm fw-bold">
+                <p>-> ID: ########</p>
+                <p>-> N: Juan Pablo</p>
+                <p>-> A: Marquez Sanchez</p>
+                <p>-> C: juan013sanchez@gmail.com</p>
+            </div>
+            <button type="button" class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" data-bs-toggle="modal" data-bs-target="#exampleedit">Editar</button>
+            <p></p>
+        </div>
+        <div class="col-9 border border-dark border-2">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Libro</th>
+                      <th scope="col">Estado</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-group-divider">
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Ejemplo de Nombre de libro 1</td>
+                      <td>Descargado</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Ejemplo de Nombre de libro 2</td>
+                      <td>Guardado</td>
+                    </tr>
+                  </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleedit" tabindex="-1" aria-labelledby="exampleeditLabel" aria-hidden="true" data-bs-backdrop="false">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title fs-5 fw-bold mb-0" id="exampleeditLabel">Editar Usuario</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <table class="table">
+                    <tr>
+                        <td>NOMBRE:</td>
+                        <td><input class="form-control" type="text" placeholder="Tu Nombre" name="nombre" required> </td>
+                    </tr>
+                    <tr>
+                        <td>APELLIDO:</td>
+                        <td><input class="form-control" type="text" placeholder="Tu Apellido" name="apellido" required> </td>
+                      </tr>
+                    <tr>
+                        <td>MAIL:</td>
+                        <td><input class="form-control" type="email" placeholder="Tu Correo" name="email" required></td>
+                    </tr>
+                    <tr>
+                        <td>CONTRASEÑA:</td>
+                        <td><input class="form-control" type="password" placeholder="Tu Contraseña" name="password" required> </td>
+                    </tr>
+                    <br>
+                    <tr>
+                        <td>
+                          <input class="btn btn-primary rounded" type="submit" value="Enviar Datos" name="enviar" data-bs-dismiss="modal">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
