@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { AventuraComponent } from './componentes/aventura/aventura.component';
 import { CienciaComponent } from './componentes/ciencia/ciencia.component';
@@ -31,7 +34,10 @@ import { OlvidarComponent } from './componentes/olvidar/olvidar.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [BackendService],
   bootstrap: [AppComponent]

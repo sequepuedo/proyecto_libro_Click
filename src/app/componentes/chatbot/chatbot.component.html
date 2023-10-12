@@ -1,15 +1,29 @@
-<p class="text-center">Sugerencias del chatbot!</p>
-<div class="container-fluid">
-    <div class="card-group row row-cols-auto">
-      <div> <!--Aqui se ponen el *ngFor para cargar todas las cartas-->
-        <div class="card col-{breakpoint}-auto border border-dark" style="width: 15rem;">
-          <img src="https://picsum.photos/700/400?random" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title text-center mb-3 border border-primary border-3 rounded-4">Titulo del Libro</h5>
-            <a class="btn btn-success mx-4 rounded-5">+</a>
-            <a class="btn btn-danger rounded-5">Descargar</a>
+<button class="floating-button" (click)="toggleChat()" data-bs-toggle="modal" data-bs-target="#myModal">
+  <i class="fas fa-comment"></i> Chat
+</button>
+
+<div class="modal" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-bs-backdrop="false">
+  <div class="modal-dialog modal-dialog-bottom-right">
+      <div class="modal-content col-1">
+          <!-- Contenido del modal -->
+          <div class="modal-header">
+              <h1 class="modal-title fs-5" id="myModalLabel">Bienvenido al Chatbot!!!</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-        </div>
+          <div class="modal-body">
+            <div>
+              <p class="fw-bold ">Hola! Soy el Chatboy en que lo puedo ayudar hoy?</p>
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Chat:</label>
+              <textarea class="form-control" id="message-text"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Enviar</button>
+          </div>
       </div>
-    </div> 
+  </div>
 </div>
+
+

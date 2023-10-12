@@ -12,10 +12,10 @@
         <div class="col-3 border border-dark border-2 ">
             <br>
             <div class="lh-sm fw-bold">
-                <p>-> ID: ########</p>
-                <p>-> N: Juan Pablo</p>
-                <p>-> A: Marquez Sanchez</p>
-                <p>-> C: juan013sanchez@gmail.com</p>
+                <p>-> ID: {{usuario.id}}</p>
+                <p>-> N: {{usuario.nombre}}</p>
+                <p>-> A: {{usuario.apellido}}</p>
+                <p>-> C: {{usuario.correo}}</p>
             </div>
             <button type="button" class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" data-bs-toggle="modal" data-bs-target="#exampleedit">Editar</button>
             <p></p>
@@ -30,15 +30,10 @@
                     </tr>
                   </thead>
                   <tbody class="table-group-divider">
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Ejemplo de Nombre de libro 1</td>
-                      <td>Descargado</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Ejemplo de Nombre de libro 2</td>
-                      <td>Guardado</td>
+                    <tr *ngFor="let libro of historial">
+                      <td>{{libro.idlibro}}</td>
+                      <td>{{libro.titulo}}</td>
+                      <td>{{libro.estado}}</td>
                     </tr>
                   </tbody>
             </table>
@@ -56,28 +51,24 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form>
+            <form ngNativeValidate [formGroup]="formularioUsuario" (click)="enviarDatos()">
                 <table class="table">
                     <tr>
                         <td>NOMBRE:</td>
-                        <td><input class="form-control" type="text" placeholder="Tu Nombre" name="nombre" required> </td>
+                        <td><input required="text" class="form-control" type="text" placeholder="Tu Nombre" name="nombre" formControlName="nombre"> </td>
                     </tr>
                     <tr>
                         <td>APELLIDO:</td>
-                        <td><input class="form-control" type="text" placeholder="Tu Apellido" name="apellido" required> </td>
+                        <td><input required="text"class="form-control" type="text" placeholder="Tu Apellido" name="apellido" formControlName="apellido"> </td>
                       </tr>
                     <tr>
-                        <td>MAIL:</td>
-                        <td><input class="form-control" type="email" placeholder="Tu Correo" name="email" required></td>
-                    </tr>
-                    <tr>
                         <td>CONTRASEÑA:</td>
-                        <td><input class="form-control" type="password" placeholder="Tu Contraseña" name="password" required> </td>
+                        <td><input required="password" class="form-control" type="password" placeholder="Tu Contraseña" name="password" formControlName="contrasena"> </td>
                     </tr>
                     <br>
                     <tr>
                         <td>
-                          <input class="btn btn-primary rounded" type="submit" value="Enviar Datos" name="enviar" data-bs-dismiss="modal">
+                          <input class="btn btn-primary rounded" type="submit" (click)="datos()" value="Enviar Datos" name="enviar" routerLink="usuario">
                         </td>
                     </tr>
                 </table>

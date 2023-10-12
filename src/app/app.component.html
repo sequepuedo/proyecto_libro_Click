@@ -32,9 +32,17 @@
       </ul>
       <ul class="navbar-nav me-left mb-2 mb-lg-0">
         <li class="nav-item">
-          <button type="button" class="btn btn-outline-primary fs-5 fw-bold rounded-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            {{estado}}
-          </button>
+          <div *ngIf="backendService.sinUsuario">
+            <button type="button" class="btn btn-outline-primary fs-5 fw-bold rounded-5" data-bs-toggle="modal" data-bs-target="#exampleModal"> <!---->
+              inicio secion
+            </button>
+          </div>
+          <div *ngIf="backendService.usuarioAutenticado">
+            <button type="button" class="btn btn-outline-primary fs-5 fw-bold rounded-5" routerLink="usuario">
+              {{estado}}
+            </button>
+          </div>
+          
         </li>
       </ul>
     </div>
@@ -52,10 +60,10 @@
           <a style="margin-left: 0rem;" href="https://www.facebook.com/" target="_blank">
             <img [src]="logo1" width=50>
           </a>
-          <a style="margin-left: 2rem;" href="https://twitter.com/" target="_blank">
+          <a style="margin-left: 2rem;" href="https://www.instagram.com/" target="_blank">
             <img [src]="logo2" width=50>
           </a>
-          <a style="margin-left: 2rem;" href="https://www.instagram.com/" target="_blank">
+          <a style="margin-left: 2rem;" href="https://twitter.com/" target="_blank">
             <img [src]="logo3" width=50>
           </a>
       </div>
@@ -66,29 +74,33 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
+<div *ngIf="!backendService.usuarioAutenticado">
+  
+</div>
+
+<div class="modal" id="exampleModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title fs-5 fw-bold mb-0" id="exampleModalLabel">Iniciar Sesion</h2>
+        <h2 class="modal-title fs-5 fw-bold mb-0">Inicio Seccion</h2>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="">
+        <form [formGroup]="formularioSeccion" (ngSubmit)="inicioSeccion()">
           <div class="form-floating mb-3">
-            <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" required>
+            <input required type="email" class="form-control rounded-3" id="" placeholder="name@example.com" formControlName="correo">
             <label for="floatingInput">Correo Electronico</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password" required>
+            <input required type="password" class="form-control rounded-3" id="" placeholder="Password" formControlName="contrasena">
             <label for="floatingPassword">Contraseña</label>
           </div>
-          <a class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" data-bs-dismiss="modal" routerLink="usuario" (click)="iniciado(1)">Entrar</a>
-          <a class="w-100 mb-2 btn btn-lg rounded-3 btn-secondary" data-bs-dismiss="modal" routerLink="olvidar">Olvide mi Contraseña</a>
+          <button type="submit" class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" (click)="cerrarModal()">Entrar</button>
           <hr class="my-4">
           <h2 class="fs-5 fw-bold mb-3">No tengo Cuenta:</h2>
+          
         
-          <button type="button" class="w-100 py-2 mb-2 btn btn-outline-dark rounded-3" data-bs-dismiss="modal" routerLink="registro">
+          <button type="button" class="w-100 py-2 mb-2 btn btn-outline-dark rounded-3" routerLink="registro">
             Registrarme
           </button>
           
@@ -99,30 +111,9 @@
   </div>
 </div>
 
-<button class="floating-button" (click)="toggleChat()" data-bs-toggle="modal" data-bs-target="#myModal">
-  <i class="fas fa-comment"></i> Chat
-</button>
 
-<div class="modal" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-bs-backdrop="false">
-  <div class="modal-dialog modal-dialog-bottom-right">
-      <div class="modal-content col-1">
-          <!-- Contenido del modal -->
-          <div class="modal-header">
-              <h1 class="modal-title fs-5" id="myModalLabel">Bienvenido al Chatbot!!!</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div>
-              <p class="fw-bold ">Hola! Soy el Chatboy en que lo puedo ayudar hoy?</p>
-            </div>
-            <div class="mb-3">
-              <label for="message-text" class="col-form-label">Chat:</label>
-              <textarea class="form-control" id="message-text"></textarea>
-            </div>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-primary" routerLink="chatbot" data-bs-dismiss="modal">Enviar</button>
-          </div>
-      </div>
-  </div>
-</div>
+
+
+
+
+<app-chatbot></app-chatbot>

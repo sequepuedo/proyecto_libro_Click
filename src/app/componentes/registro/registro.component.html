@@ -4,23 +4,23 @@
     <div class="col"></div>
     <div class="col-5 border border-5">
         <h1>Formulario de Registro: </h1>
-        <form>
+        <form ngNativeValidate [formGroup]="formularioDeUsuarios" (ngSubmit)="enviarDatos()">
             <table class="table">
                 <tr>
                     <td>NOMBRE:</td>
-                    <td><input class="form-control" type="text" placeholder="Tu Nombre" name="nombre" required> </td>
+                    <td><input required="text" class="form-control" type="text" placeholder="Tu Nombre" name="" formControlName="nombre"> </td>
                 </tr>
                 <tr>
                     <td>APELLIDO:</td>
-                    <td><input class="form-control" type="text" placeholder="Tu Apellido" name="apellido" required> </td>
+                    <td><input required="text" class="form-control" type="text" placeholder="Tu Apellido" name="" formControlName="apellido"> </td>
                   </tr>
                 <tr>
                     <td>MAIL:</td>
-                    <td><input class="form-control" type="email" placeholder="Tu Correo" name="email" required></td>
+                    <td><input required="email" class="form-control" type="email" placeholder="Tu Correo" name="" formControlName="correo"></td>
                 </tr>
                 <tr>
                     <td>CONTRASEÑA:</td>
-                    <td><input class="form-control" type="password" placeholder="Tu Contraseña" name="password" required> </td>
+                    <td><input required="password" class="form-control" type="password" placeholder="Tu Contraseña" name="" formControlName="contrasena"> </td>
                 </tr>
                 <br>
                 <tr>
@@ -33,3 +33,4 @@
     </div>
     <div class="col"></div>
 </div>
+
