@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
+import { Component, Renderer2, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder} from '@angular/forms';
 import { BackendService } from 'src/app/servicios/backend.service';
 import { Route, Router } from '@angular/router';
@@ -8,7 +8,7 @@ import { Route, Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
   formularioSeccion:FormGroup;
   title = 'Libro-Click';
 
@@ -34,23 +34,14 @@ export class AppComponent {
 
   }
 
-  ngOnInit() {
-    // Verificar si mostrarModal es true y cerrar el modal
-    this.mostrarModal = this.backendService.usuarioAutenticado;
-    if (this.mostrarModal) {
-      this.cerrarModal();
+  modalSeccion(sec:boolean){
+    if (sec === true){
+      this.mostrarModal = true;
+    } else {
+      this.mostrarModal = false;
     }
   }
 
-  cerrarModal() {
-    const modal = this.el.nativeElement.querySelector('#exampleModal');
-    if (modal) {
-      this.renderer.addClass(modal, 'show');
-      this.renderer.setStyle(modal, 'display', 'block');
-    }
-  }
-  
-  
   resCorreo:any;
   resContrasena:any;
   inicioSeccion(){
@@ -78,6 +69,7 @@ export class AppComponent {
           this.backendService.usuarioAutenticado = true;
           this.backendService.sinUsuario = false;
           window.confirm("Inicio Seccion Correcto");
+          this.modalSeccion(false);
           this.ruteador.navigate(['/usuario']);
         } else {
           window.confirm("Correo o Contraseña Incorrectos");

@@ -33,7 +33,7 @@
       <ul class="navbar-nav me-left mb-2 mb-lg-0">
         <li class="nav-item">
           <div *ngIf="backendService.sinUsuario">
-            <button type="button" class="btn btn-outline-primary fs-5 fw-bold rounded-5" data-bs-toggle="modal" data-bs-target="#exampleModal"> <!---->
+            <button type="button" class="btn btn-outline-primary fs-5 fw-bold rounded-5" (click)="modalSeccion(true)"> <!---->
               inicio secion
             </button>
           </div>
@@ -74,43 +74,38 @@
 
 
 <!-- Modal -->
-<div *ngIf="!backendService.usuarioAutenticado">
-  
-</div>
-
-<div class="modal" id="exampleModal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title fs-5 fw-bold mb-0">Inicio Seccion</h2>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="formularioSeccion" (ngSubmit)="inicioSeccion()">
-          <div class="form-floating mb-3">
-            <input required type="email" class="form-control rounded-3" id="" placeholder="name@example.com" formControlName="correo">
-            <label for="floatingInput">Correo Electronico</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input required type="password" class="form-control rounded-3" id="" placeholder="Password" formControlName="contrasena">
-            <label for="floatingPassword">Contraseña</label>
-          </div>
-          <button type="submit" class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" (click)="cerrarModal()">Entrar</button>
-          <hr class="my-4">
-          <h2 class="fs-5 fw-bold mb-3">No tengo Cuenta:</h2>
+<div *ngIf="mostrarModal">
+  <div class="modal-center">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title fs-5 fw-bold mb-3">Inicio Seccion</h2>
+          <button type="button" class="btn-close" (click)="modalSeccion(false)" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formularioSeccion" (ngSubmit)="inicioSeccion()">
+            <div class="form mb-4">
+              <input required type="email" class="form-control rounded-3" id="" placeholder="Correo Electronico" formControlName="correo">
+            </div>
+            <div class="form mb-4">
+              <input required type="password" class="form-control rounded-3" id="" placeholder="Contraseña" formControlName="contrasena">
+            </div>
+            <button type="submit" class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" >Entrar</button>
+            <hr class="my-4">
+            <h2 class="fs-5 fw-bold mb-3">No tengo Cuenta:</h2>
+            
           
-        
-          <button type="button" class="w-100 py-2 mb-2 btn btn-outline-dark rounded-3" routerLink="registro">
-            Registrarme
-          </button>
-          
-          <small class="text-muted">Al hacer Clic en Registrar acepta los terminos de uso.</small>
-        </form>
+            <button type="button" class="w-100 py-2 mb-2 btn btn-outline-dark rounded-3" (click)="modalSeccion(false)" routerLink="registro">
+              Registrarme
+            </button>
+            
+            <small class="text-muted">Al hacer Clic en Registrar acepta los terminos de uso.</small>
+          </form>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
 
 
 
