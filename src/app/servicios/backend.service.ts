@@ -11,6 +11,7 @@ import { historial } from './historial';
 export class BackendService {
   API: string="http://localhost/biblioteca/";
   constructor(private clienteHttp:HttpClient) {
+    
   }
 
   usuarioAutenticado: boolean = false;
@@ -58,4 +59,12 @@ export class BackendService {
     return this.clienteHttp.get(this.API+"?consultarH="+usuid)
   }
   
+  obtenerLibros1(categoria: string) {
+    
+    return this.clienteHttp.get(this.API + `?libros&genero=${categoria}`);
+  }
+  
+  
+
+
 }

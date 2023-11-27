@@ -13,7 +13,6 @@ export class CienciaComponent {
 
   ngOnInit(): void {
     this.backendService.obtenerLibros().subscribe(respuesta => {
-      console.log(respuesta);
       this.libros=respuesta;
     });
   }
